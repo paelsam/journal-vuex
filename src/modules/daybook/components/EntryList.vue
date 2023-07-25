@@ -1,0 +1,42 @@
+<template>
+    <div class="entry-list-container">
+        <div class="px-2 pt-2">
+            <input type="text" class="form-control" placeholder="Buscar entrada">
+        </div>
+        <div class="entry-scrollarea">
+            <Entry 
+                v-for="item in 100"
+                :key="item"
+            />
+        </div>
+    </div>
+
+</template>
+
+<script>
+    import { defineAsyncComponent } from 'vue';
+    
+    export default {
+        components: {
+            Entry: defineAsyncComponent(() => import('../components/Entry.vue'))
+        },
+    };
+</script>
+
+<style lang="scss" scoped>
+@import "@/styles/styles.scss";
+
+input {
+    width: 5rem;
+}
+.entry-list-container {
+    border-right: 1px solid map-get($theme-colors, dark);
+    height: calc( 100vh - 56px );
+}
+
+.entry-scrollarea {
+    height: calc( 100vh - 6rem );
+    overflow: scroll;
+}
+
+</style>
